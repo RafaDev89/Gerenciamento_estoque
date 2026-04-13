@@ -1,0 +1,67 @@
+APRESENTACAO - GERENCIAMENTO DE ESTOQUE (2 PESSOAS)
+
+1) Objetivo do trabalho
+- Sistema de gerenciamento de estoque com CRUD de usuarios e produtos.
+- Registro de transacoes de compra/venda.
+- Persistencia no navegador com localStorage.
+
+2) Tecnologias utilizadas
+- Vue 3 (Composition API + script setup)
+- TypeScript
+- Vite
+- Vue Router
+- Bootstrap
+
+3) Divisao da apresentacao
+
+Pessoa 1 (Contexto, arquitetura e regras de negocio)
+- Introducao do projeto e objetivo.
+- Estrutura geral do sistema.
+- Explicacao do store central e regras de negocio.
+- Controle de perfis (admin e cliente).
+
+Pessoa 2 (Componentizacao, telas e demo)
+- Explicacao da componentizacao feita.
+- Fluxo das telas Home, Admin e Usuario.
+- Demonstracao ao vivo do sistema.
+- Encerramento e proximos passos.
+
+4) Roteiro pronto - Pessoa 1 (fala sugerida)
+- "Nosso projeto e um sistema de gerenciamento de estoque feito com Vue 3, TypeScript e Vite."
+- "Ele permite cadastrar usuarios e produtos, realizar transacoes e manter os dados salvos no navegador."
+- "A arquitetura separa telas, roteamento e regras de negocio para facilitar manutencao."
+- "As regras principais estao no store: criar/editar/excluir usuarios e produtos, selecionar usuario atual e executar transacoes."
+- "Na transacao, validamos usuario, quantidade e estoque. Se estiver certo, reduzimos estoque e registramos historico."
+
+5) Roteiro pronto - Pessoa 2 (fala sugerida)
+- "A principal melhoria foi a componentizacao de blocos repetidos."
+- "Criamos componentes comuns para cabecalhos, cards de metricas e tabela de transacoes."
+- "No modulo admin, separamos formulario e tabela de usuarios e produtos."
+- "No modulo de cliente, criamos componente de compra e reutilizamos a tabela de historico."
+- "Com isso, o codigo ficou mais limpo, reutilizavel e facil de manter."
+
+6) Demo ao vivo (ordem sugerida)
+- Selecionar usuario administrador.
+- Ir para Admin e cadastrar produto.
+- Editar e excluir para mostrar CRUD.
+- Trocar para usuario cliente.
+- Ir para Usuario e realizar compra.
+- Mostrar historico de compras e Home atualizada.
+
+7) Pontos fortes para destacar
+- Regras de negocio centralizadas no store.
+- Reutilizacao de componentes.
+- Controle de permissao por perfil.
+- Persistencia local sem depender de backend.
+
+8) Possiveis perguntas e respostas
+- Pergunta: "Por que usar store central?"
+  Resposta: "Para evitar logica duplicada e manter consistencia das regras."
+- Pergunta: "Qual o ganho da componentizacao?"
+  Resposta: "Menos repeticao, manutencao mais simples e evolucao mais rapida."
+- Pergunta: "Como os dados nao se perdem ao recarregar?"
+  Resposta: "Usamos localStorage para salvar usuarios, produtos, transacoes e usuario atual."
+
+9) Encerramento sugerido
+- "Entregamos um sistema funcional, organizado e escalavel para o escopo proposto."
+- "Como evolucao futura, podemos integrar API real, autenticacao e relatorios."

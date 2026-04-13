@@ -1,15 +1,28 @@
 <script setup lang="ts">
-import { currentUser, currentUserId, selectUser, totalInventoryValue, totalProducts, totalUsers, users } from './stores/useInventoryStore'
+import CurrentUserCard from "./components/layout/CurrentUserCard.vue";
+import QuickSummaryCard from "./components/layout/QuickSummaryCard.vue";
+import {
+  currentUser,
+  currentUserId,
+  selectUser,
+  totalInventoryValue,
+  totalProducts,
+  totalUsers,
+  users,
+} from "./stores/useInventoryStore";
 </script>
 
 <template>
   <div class="container py-4">
     <header class="mb-4">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-3"
+      >
         <div>
           <h1 class="mb-2">Gerenciamento de Estoque</h1>
           <p class="lead text-secondary mb-0">
-            Sistema de estoque com CRUD de usuários, produtos, compras e vendas persistidos no navegador.
+            Sistema de estoque com CRUD de usuários, produtos, compras e vendas
+            persistidos no navegador.
           </p>
         </div>
         <nav>
@@ -30,46 +43,18 @@ import { currentUser, currentUserId, selectUser, totalInventoryValue, totalProdu
 
     <div class="row gy-4">
       <div class="col-lg-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Usuário atual</h5>
-            <div class="mb-3">
-              <label class="form-label">Selecione o usuário</label>
-              <select class="form-select" v-model="currentUserId" @change="selectUser(currentUserId)">
-                <option v-for="user in users" :key="user.id" :value="user.id">
-                  {{ user.name }} ({{ user.role === 'admin' ? 'Administrador' : 'Cliente' }})
-                </option>
-              </select>
-            </div>
-            <div v-if="currentUser" class="mt-3">
-              <div class="d-flex align-items-center gap-2 mb-2">
-                <span class="badge bg-primary">{{ currentUser.role === 'admin' ? 'Administrador' : 'Cliente' }}</span>
-                <span class="text-muted">{{ currentUser.email }}</span>
-              </div>
-              <p class="mb-0">Navegue entre Home, Admin e Usuário para usar o sistema.</p>
-            </div>
-          </div>
-        </div>
+        <CurrentUserCard
+          v-model="currentUserId"
+          :users="users"
+          :current-user="currentUser"
+          @change-user="selectUser"
+        />
 
-        <div class="card shadow-sm mt-4">
-          <div class="card-body">
-            <h5 class="card-title">Resumo rápido</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Usuários
-                <span class="badge bg-secondary rounded-pill">{{ totalUsers }}</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Produtos
-                <span class="badge bg-secondary rounded-pill">{{ totalProducts }}</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                Valor em estoque
-                <strong>R$ {{ totalInventoryValue.toFixed(2) }}</strong>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <QuickSummaryCard
+          :total-users="totalUsers"
+          :total-products="totalProducts"
+          :total-inventory-value="totalInventoryValue"
+        />
       </div>
 
       <div class="col-lg-8">
